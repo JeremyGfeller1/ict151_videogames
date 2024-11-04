@@ -9,7 +9,6 @@
  * Description :
  */
 
-
  class Database
  {
     // Variable de classe
