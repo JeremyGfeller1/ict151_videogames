@@ -1,31 +1,59 @@
-<?php
-    $connector = new PDO('mysql:host=127.0.0.1;dbname=ict151_videogames;charset=utf8', 'root', '');
-
-    $req = $connector->query('select * from pseudos');
-    $pseudos = $req->fetchALL(PDO::FETCH_OBJ);
-
-    $req = $connector->query('select * from videogames');
-    $games = $req->fetchALL(PDO::FETCH_OBJ);
-
-    echo json_encode($pseudos);
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Liste des pseudos et jeux vidéos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Liste des Pseudos</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
     </head>
     <body>
-        <ul>
-            <?php foreach($pseudos as $pseudo): ?>
-                <li><?= $pseudo->nickname ?></li>
-            <?php endforeach ?>
-        </ul>
-        <ul>
-            <?php foreach($games as $game): ?>
-                <li><?= $game->noun ?></li>
-            <?php endforeach ?>
-        </ul>
+        <div class="container">
+            <h1>Les Pseudos</h1>
+            
+            <!-- Barre de navigation -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Sous-titre -->
+            <h2>Liste des pseudos</h2>
+            
+            <!-- Tableau des pseudos -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Genre</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pseudo1</td>
+                        <td>Masculin</td>
+                        <td>Option1</td>
+                    </tr>
+                    <tr>
+                        <td>Pseudo2</td>
+                        <td>Féminin</td>
+                        <td>Option2</td>
+                    </tr>
+                    <tr>
+                        <td>Pseudo3</td>
+                        <td>Autre</td>
+                        <td>Option3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <hr>
+            <p>Copyright Jérémy Gfeller - 2024</p>
+        </footer>
     </body>
 </html>
