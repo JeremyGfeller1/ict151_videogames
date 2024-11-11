@@ -20,30 +20,42 @@
     public function __construct()
     {
         // TODO: Se connecter via PDO et utilise la variable de classe $connector
+        $this->connector = new PDO('mysql:host=127.0.0.1;dbname=ict151_videogames;charset=utf8', 'root', '');
     }
 
     /**
      * TODO: à compléter
      */
-    private function querySimpleExecute($query)
+    public function querySimpleExecute($query)
     {
         // TODO: permet de préparer et d’exécuter une requête de type simple (sans where)
+        return $this->connector->query($query);
     }
 
     /**
      * TODO: à compléter
      */
-    private function queryPrepareExecute($query, $binds)
+    public function queryPrepareExecute($query, $binds)
     {
         // TODO: permet de préparer, de binder et d’exécuter une requête (select avec where ou insert, update et delete)
+        $req = $this->connector->prepare($query);
+
+        foreach($binds as $key => $value) {
+            $req->bindValue($key, $value);
+        }
+
+        $req->execute();
+
+        return $req;
     }
 
     /**
      * TODO: à compléter
      */
-    private function formatData($req)
+    public function formatData($req)
     {
         // TODO: traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
     /**

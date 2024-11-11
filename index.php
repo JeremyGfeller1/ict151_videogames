@@ -1,8 +1,11 @@
 <?php
-    $connector = new PDO('mysql:host=127.0.0.1;dbname=ict151_videogames;charset=utf8' , 'root', '');
 
-    $req = $connector->query('select * from pseudos');
-    $pseudos = $req->fetchAll(PDO::FETCH_OBJ);
+    require_once 'Database.php';
+
+    $database = new Database();
+    $req = $database->querySimpleExecute('select nickname, gender from pseudos');
+    $pseudos = $database->formatData($req);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -69,11 +72,11 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-        </div>
 
-        <footer>
-            <hr>
-            <p>Copyright Jérémy Gfeller - 2024</p>
-        </footer>
+            <footer>
+                <hr>
+                <p>Copyright Jérémy Gfeller - 2024</p>
+            </footer>
+        </div>
     </body>
 </html>
