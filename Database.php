@@ -71,6 +71,15 @@
     /**
      * TODO: à compléter
      */
+    public function formatOneData($req)
+    {
+        // TODO: traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * TODO: à compléter
+     */
     private function unsetData($req)
     {
         // TODO: vider le jeu d’enregistrement
