@@ -13,14 +13,24 @@
  {
     // Variable de classe
     private $connector;
+    private $host;
+    private $database;
+    private $username;
+    private $password;
 
     /**
      * TODO: à compléter
      */
     public function __construct()
     {
+        $config = require_once __DIR__ . '/config/config.php';
+        $this->host = $config->host;
+        $this->database = $config->database;
+        $this->username = $config->username;
+        $this->password = $config->password;
+
         // TODO: Se connecter via PDO et utilise la variable de classe $connector
-        $this->connector = new PDO('mysql:host=127.0.0.1;dbname=ict151_videogames;charset=utf8', 'root', '');
+        $this->connector = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->database . ';charset=utf8', $this->username, $this->password);
     }
 
     /**
