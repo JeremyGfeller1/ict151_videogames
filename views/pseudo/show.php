@@ -1,12 +1,3 @@
-<?php
-
-    require_once __DIR__ . '/../../Database.php';
-
-    $database = new Database();
-    $req = $database->queryPrepareExecute('select * from pseudos where id = :id', [ 'id' => 1 ]);
-    $pseudo = $database->formatOneData($req);
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -34,19 +25,7 @@
             <table style="width: 100%;">
                 <tr>
                     <td><?= $pseudo->nickname ?></td>
-                    <td>
-                        <?php
-                            if ($pseudo->gender == 'h') {
-                                echo 'Homme';
-                            }
-                            if ($pseudo->gender == 'w') {
-                                echo 'Femme';
-                            }
-                            if ($pseudo->gender == 'o') {
-                                echo 'Autre';
-                            }
-                        ?>
-                    </td>
+                    <td><?= $pseudo->gender ?></td>
                     <td>Liste des jeux vidéos</td>
                     <td>
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -64,8 +43,9 @@
                     </td>
                     <td colspan="2">
                         <ul>
-                            <li>Fifa</li>
-                            <li>Call of Duty</li>
+                            <?php foreach($games as $game): ?>
+                                <li><?= $game->noun ?></li>
+                            <?php endforeach ?>
                         </ul>
                     </td>
                 </tr>
