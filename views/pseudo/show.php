@@ -43,7 +43,7 @@
                     </td>
                     <td colspan="2">
                         <ul>
-                            <?php foreach($games as $game): ?>
+                            <?php foreach($pseudo->games as $game): ?>
                                 <li><?= $game->noun ?></li>
                             <?php endforeach ?>
                         </ul>
