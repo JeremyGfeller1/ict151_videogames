@@ -53,3 +53,15 @@ footer {
     bottom: 0;
     left: 0;
 }
+
+.flex {
+    display: flex;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.addPadding {
+    padding: 10px;
+}
