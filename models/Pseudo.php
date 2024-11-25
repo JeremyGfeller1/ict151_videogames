@@ -32,4 +32,18 @@ class Pseudo
         ', [ 'id' => $id ]);
         return $this->database->formatData($req);
     }
+
+    public function addPseudo($form)
+    {
+        $query = "INSERT INTO pseudos (nickname, gender, origin, since) VALUES (:nickname, :gender, :origin, :since)";
+        $binds = [
+            "nickname" => $form["nickname"],
+            "gender" => $form["gender"],
+            "origin" => $form["origin"],
+            "since" => $form["since"],
+        ];
+
+        $this->database->queryPrepareExecute($query, $binds);
+        return $this->database->getLastInsertId();
+    }
 }
