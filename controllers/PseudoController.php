@@ -3,10 +3,16 @@
 class PseudoController
 {
     private $pseudo;
+    private $game;
+    private $pseudoInVideoGame;
     public function __construct()
     {
-        require_once __DIR__ . '/../models/Pseudo.php';
+        require __DIR__ . '/../models/Pseudo.php';
+        require __DIR__ . '/../models/VideoGame.php';
+        require __DIR__ . '/../models/PseudoInVideoGame.php';
         $this->pseudo = new Pseudo();
+        $this->game = new VideoGame();
+        $this->pseudoInVideoGame = new PseudoInVideoGame();
     }
 
     public function show($id)
