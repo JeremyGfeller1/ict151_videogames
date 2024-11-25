@@ -23,7 +23,7 @@
      */
     public function __construct()
     {
-        $config = require_once __DIR__ . '/config/config.php';
+        $config = require __DIR__ . '/config/config.php';
         $this->host = $config->host;
         $this->database = $config->database;
         $this->username = $config->username;
@@ -75,6 +75,11 @@
     {
         // TODO: traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
         return $req->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getLastInsertId()
+    {
+        return $this->connector->lastInsertId();
     }
 
     /**
