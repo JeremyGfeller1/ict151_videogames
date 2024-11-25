@@ -34,6 +34,29 @@ class PseudoController
         include __DIR__ . '/../views/pseudo/show.php';
     }
 
+    public function create()
+    {
+        $games = $this->game->getGames();
+
+        include __DIR__ . '/../views/pseudo/create.php';
+    }
+
+    public function store($form)
+    {
+        $idPseudo = $this->pseudo->addPseudo($form);
+
+        // VERSION SELECT SIMPLE
+        // $this->pseudoInVideoGame->addPseudoInVideoGame($idPseudo, $form['fkVideogame']);
+
+        // VERSION SELECT MULTIPLE
+        foreach ($form['fkVideogame'] as $fkVideogame) {
+            $this->pseudoInVideoGame->addPseudoInVideoGame($idPseudo, $fkVideogame);
+        }
+
+        header("Location: http://localhost:8001/");
+        exit();
+    }
+
     public function update($id)
     {
 
