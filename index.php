@@ -30,7 +30,9 @@
             
             <!-- Sous-titre -->
             <h2>Liste des pseudos</h2>
-            
+
+            <a href="views/pseudo/addPseudo.php">Créer un pseudo</a>
+
             <!-- Tableau des pseudos -->
             <table>
                 <thead>
