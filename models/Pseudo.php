@@ -63,14 +63,4 @@ class Pseudo
 
         $this->database->queryPrepareExecute($query, $binds);
     }
-
-    public function delete($id)
-    {
-        $query = "DELETE FROM pseudos WHERE id = :id;";
-        $binds = [
-            "id" => $id,
-        ];
-
-        $this->database->queryPrepareExecute($query, $binds);
-    }
 }

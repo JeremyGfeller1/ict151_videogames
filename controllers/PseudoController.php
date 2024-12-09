@@ -88,18 +88,6 @@ class PseudoController
         $this->redirect();
     }
 
-    public function delete($id)
-    {
-        // Décommenter si dans la DB nous n'avons pas mis le 'ON DELETE CASCADE' pour les clés étrangères dans la table 'pseudos_in_videogames'
-        // foreach ($this->pseudoInVideoGame->getVideogameByPseudoId($id) as $game) {
-        //     $this->pseudoInVideoGame->deleteVideoGameByIds($id, $game->id);
-        // }
-
-        $this->pseudo->delete($id);
-
-        $this->redirect();
-    }
-
     public function redirect()
     {
         header("Location: http://localhost:8000/");
