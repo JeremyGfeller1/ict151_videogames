@@ -71,6 +71,15 @@
     /**
      * TODO: à compléter
      */
+    public function formatDataAssoc($req)
+    {
+        // TODO: traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * TODO: à compléter
+     */
     public function formatOneData($req)
     {
         // TODO: traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
