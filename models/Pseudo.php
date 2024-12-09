@@ -46,4 +46,21 @@ class Pseudo
         $this->database->queryPrepareExecute($query, $binds);
         return $this->database->getLastInsertId();
     }
+
+    public function updatePseudo($form)
+    {
+        $query = "UPDATE pseudos
+            SET nickname = :nickname, gender = :gender, origin = :origin, since = :since
+            WHERE id = :id;
+        ";
+        $binds = [
+            "id" => $form["id"],
+            "nickname" => $form["nickname"],
+            "gender" => $form["gender"],
+            "origin" => $form["origin"],
+            "since" => $form["since"],
+        ];
+
+        $this->database->queryPrepareExecute($query, $binds);
+    }
 }
