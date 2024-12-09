@@ -53,13 +53,39 @@ class PseudoController
             $this->pseudoInVideoGame->addPseudoInVideoGame($idPseudo, $fkVideogame);
         }
 
-        header("Location: http://localhost:8001/");
-        exit();
+        $this->redirect();
     }
 
     public function update($id)
     {
+        $pseudo = $this->pseudo->getPseudoById($id);
+        $games = $this->videoGame->getGames();
+        $gamesSelectedForPseudo = $this->pseudoInVideoGame->getVideogameByPseudoId($id);
 
+        include __DIR__ . '/../views/pseudo/update.php';
+    }
+
+    public function updatePseudo($form)
+    {
+        $this->pseudo->updatePseudo($form);
+        $id = $form['id'];
+
+        $gamesSelectedForPseudo = $this->pseudoInVideoGame->getVideogameByPseudoId($id);
+
+        foreach ($form['fkVideogame'] as $fkVideogame) {
+            if (!$this->pseudoInVideoGame->isInTable($id, $fkVideogame)) {
+                $this->pseudoInVideoGame->addPseudoInVideoGame($id, $fkVideogame);
+            }
+
+            $arraysDiff = array_diff(array_column($gamesSelectedForPseudo, 'fkVideogame'), $form['fkVideogame']);
+            if (count($arraysDiff) > 0) {
+                foreach ($arraysDiff as $fkVideogame) {
+                    $this->pseudoInVideoGame->deleteVideoGameByIds($id, $fkVideogame);
+                }
+            }
+        }
+
+        $this->redirect();
     }
 
     public function delete($id)
