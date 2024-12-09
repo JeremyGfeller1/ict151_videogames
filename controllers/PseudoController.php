@@ -66,4 +66,10 @@ class PseudoController
     {
 
     }
+
+    public function redirect()
+    {
+        header("Location: http://localhost:8000/");
+        exit();
+    }
 }
