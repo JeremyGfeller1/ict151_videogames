@@ -3,7 +3,7 @@
 class PseudoController
 {
     private $pseudo;
-    private $game;
+    private $videoGame;
     private $pseudoInVideoGame;
     public function __construct()
     {
@@ -11,7 +11,7 @@ class PseudoController
         require __DIR__ . '/../models/VideoGame.php';
         require __DIR__ . '/../models/PseudoInVideoGame.php';
         $this->pseudo = new Pseudo();
-        $this->game = new VideoGame();
+        $this->videoGame = new VideoGame();
         $this->pseudoInVideoGame = new PseudoInVideoGame();
     }
 
