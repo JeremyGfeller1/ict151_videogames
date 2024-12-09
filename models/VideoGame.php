@@ -12,11 +12,6 @@ class VideoGame
 
     public function getGames()
     {
-        return $this->games();
-    }
-
-    private function games()
-    {
         $query = 'select * from videogames';
 
         $req = $this->database->querySimpleExecute($query);
