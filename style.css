@@ -1,67 +1,78 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    width: 80%;
-    padding: 20px;
+  width: 80%;
+  padding: 20px;
 }
 
 nav {
-    margin-top: 10px;
-    text-align: center;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .nav-links li {
-    display: inline;
-    margin: 0 10px;
+  display: inline;
+  margin: 0 10px;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
 }
 
 table {
-    width: 100%;
-    margin-top: 15px;
-    border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+table,
+th,
+td {
+  border: 1px solid #ddd;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
+th,
+td {
+  padding: 10px;
+  text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
-    color: #333;
+  background-color: #f2f2f2;
+  color: #333;
 }
 
 footer {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex1 {
-    flex: 1;
+  flex: 1;
 }
 
 .addPadding {
-    padding: 10px;
+  padding: 10px;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.w1-2 {
+  width: 50%;
 }
