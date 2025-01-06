@@ -10,6 +10,7 @@ class VideoGame
         $this->database = new Database();
     }
 
+    // Récupération des jeux viédos
     public function getGames()
     {
         $query = 'select * from videogames';

@@ -15,6 +15,7 @@ class UserController
         $username = $form['username'];
         $password = $form['password'];
 
+        // Récupération d'un user si les données de connexion sont correctes
         $user = $this->user->login($username, $password);
 
         if ($user) {

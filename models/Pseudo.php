@@ -5,22 +5,20 @@ class Pseudo
     private $database;
     public function __construct()
     {
-        // $this->database = Database::class;
         require_once __DIR__ . '/../Database.php';
         $this->database = new Database();
     }
 
-    public function getPseudos()
-    {
+    public function getPseudos() {}
 
-    }
-
+    // Récupération d'un pseudo par son ID dans la DB
     public function getPseudoById($id)
     {
         $req = $this->database->queryPrepareExecute('select * from pseudos where id = :id', [ 'id' => $id ]);
         return $this->database->formatOneData($req);
     }
 
+    // Récupération des jeux vidéos lié à un pseudo dans la DB
     public function getGamesByPseudoById($id)
     {
         $req = $this->database->queryPrepareExecute('
@@ -33,6 +31,7 @@ class Pseudo
         return $this->database->formatData($req);
     }
 
+    // Ajout d'un pseudo dans la DB
     public function addPseudo($form)
     {
         $query = "INSERT INTO pseudos (nickname, gender, origin, since) VALUES (:nickname, :gender, :origin, :since)";
@@ -47,6 +46,7 @@ class Pseudo
         return $this->database->getLastInsertId();
     }
 
+    // Mis à jour des informations d'un pseudo dans la DB
     public function updatePseudo($form)
     {
         $query = "UPDATE pseudos
@@ -64,6 +64,7 @@ class Pseudo
         $this->database->queryPrepareExecute($query, $binds);
     }
 
+    // Suppression d'un pseudo dans la DB
     public function delete($id)
     {
         $query = "DELETE FROM pseudos WHERE id = :id;";

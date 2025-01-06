@@ -9,6 +9,7 @@ class PseudoInVideoGame
         $this->database = new Database();
     }
 
+    // Sélection des jeux vidéos lié à un pseudo dans la DB
     public function getVideogameByPseudoId($fkPseudo)
     {
         $query = 'select * from pseudos_in_videogames where fkPseudo = :fkPseudo';
@@ -20,6 +21,7 @@ class PseudoInVideoGame
         return $this->database->formatDataAssoc($req);
     }
 
+    // Check si un jeu vidéo se trouve dans la DB
     public function isInTable($fkPseudo, $fkVideogame)
     {
         $query = 'select * from pseudos_in_videogames where fkPseudo = :fkPseudo and fkVideogame = :fkVideogame';
@@ -38,6 +40,7 @@ class PseudoInVideoGame
         return true;
     }
 
+    // Association d'un jeu vidéo à un pseudo dans la DB
     public function addPseudoInVideoGame($fkPseudo, $fkVideogame)
     {
         $query = "INSERT INTO pseudos_in_videogames (fkPseudo, fkVideogame) VALUES (:fkPseudo, :fkVideogame)";
@@ -49,6 +52,7 @@ class PseudoInVideoGame
         $this->database->queryPrepareExecute($query, $binds);
     }
 
+    // Suppression de l'association d'un jeu viédo à un pseudo dans la DB
     public function deleteVideoGameByIds($fkPseudo, $fkVideogame)
     {
         $query = "DELETE FROM pseudos_in_videogames WHERE fkPseudo = :fkPseudo AND fkVideogame = :fkVideogame;";

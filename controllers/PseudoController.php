@@ -17,6 +17,7 @@ class PseudoController
 
     public function show($id)
     {
+        // Récupération des infos d'un pseudo et des jeux vidéos qui lui sont associés
         $pseudo = $this->pseudo->getPseudoById($id);
         $pseudo->games = $this->pseudo->getGamesByPseudoById($id);
 
@@ -36,6 +37,7 @@ class PseudoController
 
     public function create()
     {
+        // Récupération des jeux vidéos
         $games = $this->game->getGames();
 
         include __DIR__ . '/../views/pseudo/create.php';
@@ -58,25 +60,31 @@ class PseudoController
 
     public function update($id)
     {
+        // Récupération des informations d'un jeu vidéo
         $pseudo = $this->pseudo->getPseudoById($id);
         $games = $this->videoGame->getGames();
         $gamesSelectedForPseudo = $this->pseudoInVideoGame->getVideogameByPseudoId($id);
 
+        // Affichage de la vue avec les données provenant de la DB (variables du dessus)
         include __DIR__ . '/../views/pseudo/update.php';
     }
 
     public function updatePseudo($form)
     {
+        // Mis à jour dans la base de donnée d'un pseudo
         $this->pseudo->updatePseudo($form);
         $id = $form['id'];
 
+        // Mis à jour des jeux vidéos associés au pseudo
         $gamesSelectedForPseudo = $this->pseudoInVideoGame->getVideogameByPseudoId($id);
 
         foreach ($form['fkVideogame'] as $fkVideogame) {
+            // Association d'un jeu vidéo à un pseudo
             if (!$this->pseudoInVideoGame->isInTable($id, $fkVideogame)) {
                 $this->pseudoInVideoGame->addPseudoInVideoGame($id, $fkVideogame);
             }
 
+            // Suppression de l'assocation d'un jeu viédo à un pseudo
             $arraysDiff = array_diff(array_column($gamesSelectedForPseudo, 'fkVideogame'), $form['fkVideogame']);
             if (count($arraysDiff) > 0) {
                 foreach ($arraysDiff as $fkVideogame) {

@@ -11,6 +11,7 @@ class User
 
   function getUserByID($id) {}
 
+  // Récupération d'un utilisateur dans la DB pour faire la connexion
   function login($username, $password)
   {
     // requête à la DB
