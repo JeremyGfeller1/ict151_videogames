@@ -7,6 +7,7 @@ class PseudoController
     private $pseudoInVideoGame;
     public function __construct()
     {
+        session_start();
         require __DIR__ . '/../models/Pseudo.php';
         require __DIR__ . '/../models/VideoGame.php';
         require __DIR__ . '/../models/PseudoInVideoGame.php';

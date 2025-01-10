@@ -5,9 +5,9 @@ class UserController
     private $user;
     public function __construct()
     {
+        session_start();
         require __DIR__ . '/../models/User.php';
         $this->user = new User();
-        session_start();
     }
 
     public function login($form)

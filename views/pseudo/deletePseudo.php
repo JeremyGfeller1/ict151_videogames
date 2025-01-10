@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once '../../controllers/PseudoController.php';
 $pseudoController = new PseudoController();
 
