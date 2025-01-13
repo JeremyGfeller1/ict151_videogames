@@ -26,7 +26,9 @@
                     <li><a href="#home">Accueil</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="views/pseudo/deletedPseudos.php">Pseudos supprimées</a></li>
+                    <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) : ?>
+                        <li><a href="views/pseudo/deletedPseudos.php">Pseudos supprimées</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
             
