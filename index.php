@@ -4,7 +4,7 @@
     require_once 'Database.php';
 
     $database = new Database();
-    $req = $database->querySimpleExecute('select id, nickname, gender from pseudos');
+    $req = $database->querySimpleExecute('select id, nickname, gender, isDeleted from pseudos where isDeleted = 0;');
     $pseudos = $database->formatData($req);
 
 ?>
