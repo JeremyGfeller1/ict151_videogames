@@ -26,6 +26,7 @@
                     <li><a href="#home">Accueil</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="views/pseudo/deletedPseudos.php">Pseudos supprimées</a></li>
                 </ul>
             </nav>
             
