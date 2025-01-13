@@ -123,6 +123,13 @@ class PseudoController
         $this->redirect();
     }
 
+    public function restorePseudo($id)
+    {
+        $this->pseudo->restorePseudo($id);
+
+        $this->redirect();
+    }
+
     public function redirect()
     {
         header("Location: http://localhost:8000/");

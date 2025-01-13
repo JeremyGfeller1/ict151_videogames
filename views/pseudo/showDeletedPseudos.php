@@ -51,7 +51,7 @@
                             </td>
                             <td>
                                 <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) : ?>
-                                    <a href="views/pseudo/updatePseudo.php?idPseudo=<?= $pseudo->id ?>">
+                                    <a href="restorePseudo.php?idPseudo=<?= $pseudo->id ?>">
                                         Restaurer
                                     </a>
                                     <a 

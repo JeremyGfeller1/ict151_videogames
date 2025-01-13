@@ -93,4 +93,15 @@ class Pseudo
 
         $this->database->queryPrepareExecute($query, $binds);
     }
+
+    // Suppression d'un pseudo dans la DB
+    public function restorePseudo($id)
+    {
+        $query = "UPDATE pseudos SET isDeleted = 0 WHERE id = :id;";
+        $binds = [
+            "id" => $id,
+        ];
+
+        $this->database->queryPrepareExecute($query, $binds);
+    }
 }
