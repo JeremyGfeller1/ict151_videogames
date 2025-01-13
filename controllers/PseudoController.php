@@ -130,6 +130,13 @@ class PseudoController
         $this->redirect();
     }
 
+    public function restoreAllPseudos()
+    {
+        $this->pseudo->restoreAllPseudos();
+
+        $this->redirect();
+    }
+
     public function redirect()
     {
         header("Location: http://localhost:8000/");

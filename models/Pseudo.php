@@ -73,7 +73,7 @@ class Pseudo
         return $this->database->formatData($req);
     }
 
-    // Suppression d'un pseudo dans la DB
+    // Cacher un pseudo dans la DB
     public function delete($id)
     {
         $query = "UPDATE pseudos SET isDeleted = 1 WHERE id = :id;";
@@ -84,6 +84,7 @@ class Pseudo
         $this->database->queryPrepareExecute($query, $binds);
     }
 
+    // Supprimer un pseudo de la DB
     public function defDelete($id)
     {
         $query = "DELETE FROM pseudos WHERE id = :id;";
@@ -94,13 +95,22 @@ class Pseudo
         $this->database->queryPrepareExecute($query, $binds);
     }
 
-    // Suppression d'un pseudo dans la DB
+    // Restaurer un pseudo dans la DB
     public function restorePseudo($id)
     {
         $query = "UPDATE pseudos SET isDeleted = 0 WHERE id = :id;";
         $binds = [
             "id" => $id,
         ];
+
+        $this->database->queryPrepareExecute($query, $binds);
+    }
+
+    // Restaurer les pseudos dans la DB
+    public function restoreAllPseudos()
+    {
+        $query = "UPDATE pseudos SET isDeleted = 0;";
+        $binds = [];
 
         $this->database->queryPrepareExecute($query, $binds);
     }

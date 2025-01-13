@@ -23,6 +23,14 @@
             <!-- Sous-titre -->
             <h2>Liste des pseudos</h2>
 
+            <div class="flex">
+                <div class="w1-2">
+                    <a href="restorePseudo.php">
+                        <button>Tout restaurer</button>
+                    </a>
+                </div>
+            </div>
+
             <!-- Tableau des pseudos -->
             <table>
                 <thead>
