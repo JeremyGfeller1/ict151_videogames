@@ -67,7 +67,7 @@ class Pseudo
     // Suppression d'un pseudo dans la DB
     public function delete($id)
     {
-        $query = "DELETE FROM pseudos WHERE id = :id;";
+        $query = "UPDATE pseudos SET isDeleted = 1 WHERE id = :id;";
         $binds = [
             "id" => $id,
         ];
