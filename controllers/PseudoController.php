@@ -39,7 +39,7 @@ class PseudoController
     public function create()
     {
         // Récupération des jeux vidéos
-        $games = $this->game->getGames();
+        $games = $this->videoGame->getGames();
 
         include __DIR__ . '/../views/pseudo/create.php';
     }
