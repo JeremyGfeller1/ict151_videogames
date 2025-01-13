@@ -64,10 +64,29 @@ class Pseudo
         $this->database->queryPrepareExecute($query, $binds);
     }
 
+    public function getDeletedPseudos()
+    {
+        $query = "SELECT * FROM pseudos WHERE isDeleted = 1;";
+        $binds = "";
+
+        $req = $this->database->querySimpleExecute($query);
+        return $this->database->formatData($req);
+    }
+
     // Suppression d'un pseudo dans la DB
     public function delete($id)
     {
         $query = "UPDATE pseudos SET isDeleted = 1 WHERE id = :id;";
+        $binds = [
+            "id" => $id,
+        ];
+
+        $this->database->queryPrepareExecute($query, $binds);
+    }
+
+    public function defDelete($id)
+    {
+        $query = "DELETE FROM pseudos WHERE id = :id;";
         $binds = [
             "id" => $id,
         ];

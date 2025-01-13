@@ -97,6 +97,13 @@ class PseudoController
         $this->redirect();
     }
 
+    public function showDeletedPseudos()
+    {
+        $pseudos = $this->pseudo->getDeletedPseudos();
+
+        include __DIR__ . '/../views/pseudo/showDeletedPseudos.php';
+    }
+
     public function delete($id)
     {
         // Décommenter si dans la DB nous n'avons pas mis le 'ON DELETE CASCADE' pour les clés étrangères dans la table 'pseudos_in_videogames'
@@ -105,6 +112,13 @@ class PseudoController
         // }
 
         $this->pseudo->delete($id);
+
+        $this->redirect();
+    }
+
+    public function defDeletedPseudos($id)
+    {
+        $this->pseudo->defDelete($id);
 
         $this->redirect();
     }
